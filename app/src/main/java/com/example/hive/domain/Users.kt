@@ -6,7 +6,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 @SerialName("users")
 data class Users (
-    val id: String? = null,
+    val id: Int? = null,
     @SerialName("created_at")
     val created_at: String? = null,
     val image: String = "",

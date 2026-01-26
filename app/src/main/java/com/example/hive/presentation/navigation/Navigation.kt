@@ -4,9 +4,9 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.hive.presentation.CreateProfileScreen
-import com.example.hive.presentation.LoginScreen
-import com.example.hive.presentation.SignUpScreen
+import com.example.hive.presentation.createProfile.CreateProfileScreen
+import com.example.hive.presentation.login.LoginScreen
+import com.example.hive.presentation.singUp.SignUpScreen
 import com.example.hive.presentation.StartScreen
 
 @Composable

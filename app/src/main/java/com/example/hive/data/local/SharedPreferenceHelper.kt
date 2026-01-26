@@ -1,6 +1,5 @@
-package com.example.hive.data
+package com.example.hive.data.local
 
-import android.content.Context
 import android.content.SharedPreferences
 import androidx.core.content.edit
 

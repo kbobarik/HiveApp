@@ -1,4 +1,4 @@
-package com.example.hive.presentation
+package com.example.hive.presentation.createProfile
 
 import android.content.Context
 import android.graphics.Bitmap
@@ -50,8 +50,7 @@ import com.example.hive.domain.ResultState
 import com.example.hive.presentation.components.BackgroundWavesSmall
 import com.example.hive.ui.theme.PurpleBackground
 import com.example.hive.ui.theme.PurpleDark
-import com.example.hive.viewmodel.CreateProfileViewModel
-import com.example.hive.viewmodel.LoginViewModel
+import com.example.hive.presentation.createProfile.CreateProfileViewModel
 import com.google.firebase.crashlytics.buildtools.reloc.org.apache.commons.io.output.ByteArrayOutputStream
 
 @Composable
@@ -160,11 +159,8 @@ fun CreateProfileScreen(viewModel: CreateProfileViewModel = hiltViewModel()) {
 
             Button(
                 onClick = {
-                    if(avatar.value.isNotEmpty() && nickname.value !=""){
-                       val result =  viewModel.checkValidNickname(nickname.value)
-                        if(!result){
-                            viewModel.addAvatar(avatar.value,nickname.value)
-                        }
+                    if (avatar.value.isNotEmpty() && nickname.value != "") {
+                        viewModel.addUser(nickname.value)
                     }
                 },
                 enabled = nickname.value.isNotBlank() && avatarUri.value != null,
@@ -197,7 +193,11 @@ fun CreateProfileScreen(viewModel: CreateProfileViewModel = hiltViewModel()) {
             }
 
             is ResultState.Success -> {
-                viewModel.addUser(nickname.value)
+                Toast.makeText(
+                    context,
+                    (addAvatarState as ResultState.Success).message,
+                    Toast.LENGTH_LONG
+                ).show()
             }
 
             else -> Unit
@@ -214,11 +214,7 @@ fun CreateProfileScreen(viewModel: CreateProfileViewModel = hiltViewModel()) {
             }
 
             is ResultState.Success -> {
-                Toast.makeText(
-                    context,
-                    (addUserState as ResultState.Success).message,
-                    Toast.LENGTH_LONG
-                ).show()
+                viewModel.addAvatar(avatar.value, nickname.value)
             }
 
             else -> Unit

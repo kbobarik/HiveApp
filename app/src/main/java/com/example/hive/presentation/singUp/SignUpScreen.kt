@@ -1,9 +1,7 @@
-package com.example.hive.presentation
+package com.example.hive.presentation.singUp
 
-import android.graphics.Canvas
 import android.util.Patterns
 import android.widget.Toast
-import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -15,7 +13,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -24,14 +21,12 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.hive.domain.ResultState
 import com.example.hive.presentation.components.BackgroundWavesSmall
@@ -40,10 +35,7 @@ import com.example.hive.presentation.components.PasswordTextField
 import com.example.hive.presentation.navigation.Screens
 import com.example.hive.ui.theme.PurpleBackground
 import com.example.hive.ui.theme.PurpleDark
-import com.example.hive.ui.theme.PurpleLight
-import com.example.hive.ui.theme.PurpleMain
-import com.example.hive.viewmodel.SignUpViewModel
-import java.nio.file.Files.size
+import com.example.hive.presentation.singUp.SignUpViewModel
 
 @Composable
 fun SignUpScreen(navController: NavController, viewModel: SignUpViewModel = hiltViewModel()) {

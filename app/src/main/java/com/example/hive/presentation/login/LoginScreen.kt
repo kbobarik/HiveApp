@@ -1,4 +1,4 @@
-package com.example.hive.presentation
+package com.example.hive.presentation.login
 
 import android.util.Patterns
 import android.widget.Toast
@@ -13,7 +13,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -34,8 +33,7 @@ import com.example.hive.presentation.components.EmailTextField
 import com.example.hive.presentation.components.PasswordTextField
 import com.example.hive.ui.theme.PurpleBackground
 import com.example.hive.ui.theme.PurpleDark
-import com.example.hive.viewmodel.LoginViewModel
-import com.example.hive.viewmodel.SignUpViewModel
+import com.example.hive.presentation.login.LoginViewModel
 
 @Composable
 fun LoginScreen(viewModel: LoginViewModel = hiltViewModel()) {

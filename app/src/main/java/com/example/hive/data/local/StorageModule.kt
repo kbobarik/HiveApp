@@ -1,4 +1,4 @@
-package com.example.hive.data
+package com.example.hive.data.local
 
 import android.content.Context
 import android.content.SharedPreferences
