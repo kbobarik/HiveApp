@@ -31,6 +31,12 @@ class CreateProfileViewModel @Inject constructor(private val createProfileUseCas
                 onSuccess = { ResultState.Success("Success add avatar") },
                 onFailure = { ResultState.Error(it.message ?: "Ошибка") }
             )
+            if(_stateAddAvatar.value is ResultState.Success){
+                Log.d("add avatar", "Success add avatar")
+            }else{
+                Log.e("add avatar", "Failed add avatar")
+            }
+
         }
     }
 
@@ -44,6 +50,11 @@ class CreateProfileViewModel @Inject constructor(private val createProfileUseCas
                 onSuccess = { ResultState.Success("Success add user") },
                 onFailure = { ResultState.Error(it.message ?: "Ошибка") }
             )
+            if(_stateAddUser.value is ResultState.Success){
+                Log.d("add avatar", "Success add user")
+            }else{
+                Log.e("add avatar", "Failed add user")
+            }
         }
     }
 }

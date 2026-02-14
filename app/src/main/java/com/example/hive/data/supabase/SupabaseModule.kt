@@ -9,6 +9,7 @@ import io.github.jan.supabase.auth.Auth
 import io.github.jan.supabase.createSupabaseClient
 import io.github.jan.supabase.postgrest.Postgrest
 import io.github.jan.supabase.postgrest.PropertyConversionMethod
+import io.github.jan.supabase.realtime.Realtime
 import io.github.jan.supabase.storage.Storage
 import jakarta.inject.Singleton
 
@@ -20,7 +21,7 @@ object SupabaseModule {
     @Singleton
     fun provideSupabaseClient(): SupabaseClient =
         createSupabaseClient(
-            supabaseUrl = "https://vvbrotfgqiqdlxiykrmn.supabase.co ",
+            supabaseUrl = "https://vvbrotfgqiqdlxiykrmn.supabase.co",
             supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ2YnJvdGZncWlxZGx4aXlrcm1uIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTgyMDI3NTgsImV4cCI6MjA3Mzc3ODc1OH0.vVwYkG-ERCyx4AegyM5kaqGuFX_bXwO9NGSePceesw0"
         ) {
             install(Auth.Companion)
@@ -28,5 +29,6 @@ object SupabaseModule {
                 propertyConversionMethod = PropertyConversionMethod.Companion.SERIAL_NAME
             }
             install(Storage.Companion)
+            install(Realtime)
         }
 }

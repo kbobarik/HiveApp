@@ -16,6 +16,8 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
@@ -23,12 +25,13 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import co.touchlab.kermit.Message
 import com.example.hive.R
-import com.example.hive.ui.theme.PurpleDark
-import com.example.hive.ui.theme.PurpleMain
+import com.example.hive.ui.theme.BlueDarkest
+import com.example.hive.ui.theme.BlueMedium
+import com.example.hive.ui.theme.GreyLight
+import com.example.hive.ui.theme.Nimbus
 
 @Composable
 fun PasswordTextField(
-    label: String,
     value: String,
     placeholder: String,
     onValueChange: (String) -> Unit,
@@ -37,38 +40,37 @@ fun PasswordTextField(
     errorMessage: String
 ) {
     Column {
-        Text(
-            text = label,
-            fontSize = 14.sp,
-            color = PurpleDark
-        )
-
-        Spacer(modifier = Modifier.height(6.dp))
-
         OutlinedTextField(
             value = value,
             onValueChange = onValueChange,
             placeholder = {
-                Text(placeholder)
+                Text(
+                    placeholder,
+                    color = GreyLight,
+                    fontFamily = Nimbus,
+                    fontWeight = FontWeight.Medium
+                )
             },
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Password
             ),
+            textStyle = TextStyle(fontWeight = FontWeight.Medium, fontFamily = Nimbus, fontSize = 15.sp),
             visualTransformation = if (hide.value) PasswordVisualTransformation() else VisualTransformation.None,
             singleLine = true,
             modifier = Modifier.fillMaxWidth(),
             shape = RoundedCornerShape(14.dp),
             isError = isError,
             colors = OutlinedTextFieldDefaults.colors(
-                focusedBorderColor = PurpleMain,
-                unfocusedBorderColor = PurpleMain,
-                cursorColor = PurpleMain
+                focusedBorderColor = BlueDarkest,
+                unfocusedBorderColor = GreyLight,
+                cursorColor = BlueMedium
             ),
             trailingIcon = {
                 Icon(
                     painter = painterResource(if (hide.value) R.drawable.eye else R.drawable.close_eye),
                     "",
-                    Modifier.clickable {
+                    tint = GreyLight,
+                    modifier = Modifier.clickable {
                         hide.value = !hide.value
                     }
                 )
@@ -76,7 +78,14 @@ fun PasswordTextField(
             }
         )
         if (isError) {
-            Text(errorMessage, fontSize = 10.sp, color = Color.Red)
+            Text(
+                errorMessage,
+                fontSize = 13.sp,
+                color = Color.Red,
+                fontFamily = Nimbus,
+                fontWeight = FontWeight.Medium
+            )
         }
+
     }
 }

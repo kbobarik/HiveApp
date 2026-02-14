@@ -44,8 +44,7 @@ class CreateProfileImpl @Inject constructor(
 
     override suspend fun addUser(nickname: String): Result<Unit> = runCatching {
         val newUser = Users(
-            nickname = nickname,
-            uid = supabase.auth.currentUserOrNull()!!.id
+            nickname = nickname
         )
         supabase.from("users").insert(newUser)
         Unit

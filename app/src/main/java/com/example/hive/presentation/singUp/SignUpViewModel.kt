@@ -19,7 +19,7 @@ class SignUpViewModel @Inject constructor(private val signUpUseCase: SignUpUseCa
             _stateSignUp.value = ResultState.Loading
             val result = signUpUseCase(email,password)
             _stateSignUp.value = result.fold(
-                onSuccess = { ResultState.Success("Success sign in") },
+                onSuccess = { ResultState.Success("Success sign up") },
                 onFailure = { ResultState.Error(it.message ?: "Ошибка") }
             )
         }
